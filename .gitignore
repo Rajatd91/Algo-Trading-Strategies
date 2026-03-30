@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.claude/
+/tmp/
+
+# Custom Ignore Files
+COMP0051 - Coursework Instructions 2526.pdf
+COMP0051_Report.pdf
+VIDEO_SCRIPT.md
+generate_report.py
