@@ -1,6 +1,6 @@
 """
 COMP0051 - Algorithmic Trading Coursework
-Task 5: Next Steps [10 points]
+Task 5
 
 Analysis to support the discussion of:
   1. Performance across different time horizons
@@ -97,10 +97,6 @@ def compute_net_pnl(theta, returns):
 
 # ═══════════════════════════════════════════════════════════════════════
 # SECTION 1: ROLLING SHARPE ACROSS TIME HORIZONS
-#
-# Reference: Moskowitz, Ooi & Pedersen (2012) show momentum profits
-# vary significantly across horizons. Cont (2001) documents volatility
-# clustering, implying non-stationarity of risk-adjusted returns.
 # ═══════════════════════════════════════════════════════════════════════
 
 def rolling_sharpe_analysis(pnl_s1, pnl_s2, train_end):
@@ -164,11 +160,6 @@ def plot_rolling_sharpe(results, windows, train_end):
 
 # ═══════════════════════════════════════════════════════════════════════
 # SECTION 2: MARKET REGIME ANALYSIS
-#
-# Reference: Dacco & Satchell (1999) on regime-switching models.
-# Avellaneda & Lee (2010): MR profits in range-bound markets.
-# Moskowitz et al. (2012): TSMOM profits in trending markets.
-# Cont (2001): volatility clustering → regimes persist.
 # ═══════════════════════════════════════════════════════════════════════
 
 def regime_analysis(prices, pnl_s1, pnl_s2, theta_s1, theta_s2, train_end):
@@ -324,10 +315,6 @@ def plot_regime_analysis(stats_df, pnl_s1, pnl_s2, regime_oos, train_end):
 
 # ═══════════════════════════════════════════════════════════════════════
 # SECTION 3: STRATEGY COMBINATION & DIVERSIFICATION
-#
-# Reference: Markowitz (1952) — combining negatively correlated return
-# streams reduces portfolio variance. Bouchaud & Potters (2003) on
-# portfolio risk reduction.
 # ═══════════════════════════════════════════════════════════════════════
 
 def combination_analysis(pnl_s1, pnl_s2, train_end):
@@ -365,9 +352,6 @@ def combination_analysis(pnl_s1, pnl_s2, train_end):
 
 # ═══════════════════════════════════════════════════════════════════════
 # SECTION 4: LIVE TRADING VIABILITY
-#
-# Reference: Cartea et al. (2015) Ch. 7 — execution risk, leverage,
-# and latency. Bouchaud & Potters (2003) — drawdown and ruin.
 # ═══════════════════════════════════════════════════════════════════════
 
 def live_trading_analysis(theta_s1, theta_s2, pnl_s1, pnl_s2, train_end):
