@@ -61,21 +61,6 @@ def load_all_data():
 
 # ═══════════════════════════════════════════════════════════════════════
 # STRATEGY 1: MULTI-ASSET MEAN-REVERSION WITH MVO
-#
-# HOW IT WORKS (in plain English):
-# 1. For each coin, check: is the current price BELOW or ABOVE its
-#    recent average? If below → the signal says "buy" (expect bounce back).
-#    If above → "sell" (expect it to come back down).
-# 2. Feed these 5 signals into MVO (Markowitz optimizer) which decides
-#    HOW MUCH of each coin to hold, considering:
-#    - Which coins have the strongest signals (allocate more there)
-#    - Correlations between coins (don't put everything in similar coins)
-#    - Transaction costs (don't change positions too much each hour)
-# 3. The optimizer gives us positions in USDT for each coin.
-#    These positions are NATURALLY SIZED by the optimizer — not always
-#    maxed out. Weak signals → small positions. Strong signals → bigger.
-#
-# Reference: Avellaneda & Lee (2010), Markowitz (1952), Cartea et al. (2015)
 # ═══════════════════════════════════════════════════════════════════════
 
 def generate_mr_signals(prices, lookback_slow):
@@ -370,24 +355,6 @@ def calibrate_strategy1(prices_train, returns_train):
 
 # ═══════════════════════════════════════════════════════════════════════
 # STRATEGY 2: TREND-FOLLOWING (TIME-SERIES MOMENTUM)
-#
-# HOW IT WORKS (in plain English):
-# 1. For each coin, compare a FAST moving average (e.g., 12 hours)
-#    to a SLOW moving average (e.g., 96 hours).
-# 2. If fast MA > slow MA → price is trending UP → go LONG (buy)
-#    If fast MA < slow MA → price is trending DOWN → go SHORT (sell)
-# 3. The SIZE of the position depends on:
-#    - How strong the trend is (bigger gap between MAs = bigger position)
-#    - How volatile the coin is (more volatile = smaller position)
-# 4. When there's NO clear trend (MAs are close together), the position
-#    is NEAR ZERO — we stay mostly in cash.
-#
-# Position sizing: Each coin gets a position of:
-#    theta_i = V0 × signal_strength × (1 / volatility) × scale_factor
-#
-# Starting from $10k base. Only uses leverage when trends are strong.
-#
-# Reference: Moskowitz, Ooi & Pedersen (2012), Hurst et al. (2017)
 # ═══════════════════════════════════════════════════════════════════════
 
 def generate_trend_signals(prices, fast_ma, slow_ma):
