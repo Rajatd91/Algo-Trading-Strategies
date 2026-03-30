@@ -9,7 +9,7 @@ This repository contains the complete algorithmic trading pipeline developed for
   * **Strategy 1 (Mean-Reversion)**: Uses a 168h rolling z-score signal and allocates position sizes using Markowitz Mean-Variance Optimisation (MVO) with Ledoit-Wolf shrinkage.
   * **Strategy 2 (Trend-Following)**: Uses a 12h/96h Fast-Slow Moving Average crossover with time-series momentum volatility scaling.
 * **`3_4_costs_performance.py`**: Estimates realistic microstructure slippage using the Roll (1984) model (floored at Binance's execution fees) and computes net out-of-sample performance metrics (Sharpe, Sortino, Calmar, Turnover, Peak Drawdown).
-* **`5_next_steps.py`**: Conducts advanced performance testing, including rolling time-horizon Sharpe dynamics, bullish/bearish market regime sensitivity, executing risk feasibility limits, and mathematical 50/50 combination metrics.
+* **`5.py`**: Conducts advanced performance testing, including rolling time-horizon Sharpe dynamics, bullish/bearish market regime sensitivity, executing risk feasibility limits, and mathematical 50/50 combination metrics.
 * **`rebal_comparison.py`**: A parallel evaluation test suite mapping turnover friction across 6h, 24h, 168h, 336h, and 720h (monthly) rebalancing intervals.
 * **`generate_report.py`**: Automatically constructs the final 5-page PDF report leveraging `fpdf`.
 
